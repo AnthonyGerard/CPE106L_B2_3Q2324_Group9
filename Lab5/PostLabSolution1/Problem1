@@ -1,0 +1,30 @@
+CREATE TABLE "Participants" (
+	"Participant_ID"	INTEGER,
+	"Last_Name"	TEXT NOT NULL,
+	"First_Name"	TEXT NOT NULL,
+	"Address"	TEXT NOT NULL,
+	"Postal_Code"	TEXT NOT NULL,
+	"State"	TEXT NOT NULL,
+	"City"	TEXT NOT NULL,
+	"Landline_Number"	TEXT NOT NULL,
+	"Birthday"	NUMERIC NOT NULL,
+	PRIMARY KEY("Participant_ID")
+);
+
+CREATE TABLE "Classes" (
+	"Class_ID"	INTEGER,
+	"Biography"	TEXT NOT NULL,
+	"Max_Capacity"	INTEGER NOT NULL,
+	"Fee"	INTEGER NOT NULL,
+	PRIMARY KEY("Class_ID")
+);
+
+CREATE TABLE "Enrollments" (
+	"Enrollment_ID"	INTEGER,
+	"Participant_ID"	INTEGER NOT NULL,
+	"Class_ID"	INTEGER,
+	"Class_Date"	NUMERIC NOT NULL,
+	FOREIGN KEY("Participant_ID") REFERENCES "Participants"("Participant_ID"),
+	FOREIGN KEY("Class_ID") REFERENCES "Classes"("Class_ID"),
+	PRIMARY KEY("Enrollment_ID")
+);
